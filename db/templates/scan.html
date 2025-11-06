@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cash Register</title>
+</head>
+<body>
+<h2>Scan a Product</h2>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="upc" placeholder="Enter UPC code" required>
+    <button type="submit">Scan</button>
+</form>
+
+{% if product %}
+<h3>Product: {{ product.name }}</h3>
+<p>Price: ${{ product.price }}</p>
+{% endif %}
+</body>
+</html>
