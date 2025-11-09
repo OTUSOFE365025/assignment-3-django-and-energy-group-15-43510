@@ -24,36 +24,16 @@ Install Django with:
 pip install django
 ````
 
-## Project Structure
-
-```
-assignment-3-django-and-energy-group-15-43510/
-├── db/
-│   ├── __init__.py
-│   ├── models.py          # Product model definition
-│   ├── urls.py            # App routing
-│   ├── views.py           # Handles form and rendering
-│   └── templates/
-│       └── scan.html      # Web UI for product scanning
-├── main.py                # Stand-alone ORM script
-├── manage.py              # Django project manager
-├── settings.py            # Database and template configuration
-├── urls.py                # Root URL router
-└── db.sqlite3             # SQLite database
-```
-
----
-
 ## How to Run
 
-### 1️⃣ Migrate the database
+### Migrate the database
 
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 2️⃣ Run the stand-alone ORM script
+### Run the stand-alone ORM script
 
 ```bash
 python main.py
@@ -61,7 +41,7 @@ python main.py
 
 This seeds the database and allows UPC scanning in the terminal.
 
-### 3️⃣ Start the web server
+### Start the web server
 
 ```bash
 python manage.py runserver
