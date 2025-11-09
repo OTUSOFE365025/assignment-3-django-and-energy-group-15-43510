@@ -22,11 +22,38 @@ from db.models import *
 ############################################################################
 ## START OF APPLICATION
 ############################################################################
-""" Replace the code below with your own """
 
-# Seed a few users in the database
-User.objects.create(name='Dan')
-User.objects.create(name='Robert')
 
-for u in User.objects.all():
-    print(f'ID: {u.id} \tUsername: {u.name}')
+
+Product.objects.all().delete()
+print("Cleared old product entries.\n")
+
+
+products = [
+    {"upc": "1111", "name": "Milk", "price": 3.49},
+    {"upc": "2222", "name": "Bread", "price": 2.19},
+    {"upc": "3333", "name": "Eggs", "price": 4.79},
+    {"upc": "4444", "name": "Cheese", "price": 6.25},
+    {"upc": "5555", "name": "Butter", "price": 5.10},
+]
+
+for item in products:
+    Product.objects.create(**item)
+
+print("Added sample products successfully.\n")
+
+
+print("Current Products in Database:")
+for p in Product.objects.all():
+    print(f"UPC: {p.upc} | {p.name} - ${p.price}")
+
+
+print("\nSimulate a product scan:")
+user_upc = input("Enter a UPC code to scan: ")
+
+product = Product.objects.filter(upc=user_upc).first()
+
+if product:
+    print(f"\nProduct found: {product.name} - ${product.price}")
+else:
+    print("\nProduct not found in the database.")
